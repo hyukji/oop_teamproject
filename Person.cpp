@@ -7,8 +7,8 @@ using namespace std;
 
 
 class Person {
-	string ID; //°¢ »ç¶÷ÀÇ ID¸¦ string typeÀ¸·Î ÀúÀå
-	string password; //°¢ »ç¶÷ÀÇ ID¸¦ string typeÀ¸·Î ÀúÀå
+	string ID; //ê° ì‚¬ëŒì˜ IDë¥¼ string typeìœ¼ë¡œ ì €ì¥
+	string password; //ê° ì‚¬ëŒì˜ IDë¥¼ string typeìœ¼ë¡œ ì €ì¥
 	int type;
 public:
 	Person() {
@@ -16,37 +16,45 @@ public:
 		this-> password = "";
 		this-> type = 0;
 	};
+	
+	Person(string id, string pw, int rhs)
+	{
+		this->ID = id;
+		this->password = pw;
+		this->type = rhs;
+	};
+	
 	void set_ID(string id) 
 	{
 		this -> ID = id;
-		cout << "´ç½ÅÀÇ ID´Â " << id << "ÀÔ´Ï´Ù."; 
-	}; //stringÀ» ÀÔ·Â¹Ş¾Æ ID¸¦ string typeÀ¸·Î ÀúÀå
+		cout << "ë‹¹ì‹ ì˜ IDëŠ” " << id << "ì…ë‹ˆë‹¤."; 
+	}; //stringì„ ì…ë ¥ë°›ì•„ IDë¥¼ string typeìœ¼ë¡œ ì €ì¥
 
 	string get_ID(void) 
 	{
-		cout << "´ç½ÅÀÇ ID´Â " << ID << "ÀÔ´Ï´Ù.";
+		cout << "ë‹¹ì‹ ì˜ IDëŠ” " << ID << "ì…ë‹ˆë‹¤.";
 		return ID;
-	}; //ID¸¦ string typeÀ¸·Î return
+	}; //IDë¥¼ string typeìœ¼ë¡œ return
 	
 	void set_password(string pw) 
 	{
 		this-> password = pw;
-		cout << "´ç½ÅÀÇ PW´Â " << pw << "ÀÔ´Ï´Ù.";
-	}; //stringÀ» ÀÔ·Â¹Ş¾Æ password¸¦ string typeÀ¸·Î ÀúÀå
+		cout << "ë‹¹ì‹ ì˜ PWëŠ” " << pw << "ì…ë‹ˆë‹¤.";
+	}; //stringì„ ì…ë ¥ë°›ì•„ passwordë¥¼ string typeìœ¼ë¡œ ì €ì¥
 
 
 	string get_password(void) 
 	{
 		return password;
-	}; //password¸¦ string typeÀ¸·Î return
+	}; //passwordë¥¼ string typeìœ¼ë¡œ return
 	
 	void set_type(int input) 
 	{
 		this->type = input;
-	}; //stringÀ» ÀÔ·Â¹Ş¾Æ type¸¦ string typeÀ¸·Î ÀúÀå
+	}; //stringì„ ì…ë ¥ë°›ì•„ typeë¥¼ string typeìœ¼ë¡œ ì €ì¥
 
 	int get_type(void) 
 	{
 		return type;
-	}; //type¸¦ string typeÀ¸·Î return
+	}; //typeë¥¼ string typeìœ¼ë¡œ return
 };
