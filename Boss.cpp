@@ -7,24 +7,24 @@
 using namespace std;
 
 class Boss : public Person {
-	string store_name; //°¡°Ô ÀÌ¸§À» string typeÀ¸·Î ÀúÀå
-	string store_PH; //°¡°Ô ÀüÈ­¹øÈ£¸¦ string typeÀ¸·Î ÀúÀå
-	bool open = true; //open »óÅÂ¸¦ bool typeÀ¸·Î. ÃÊ±â°ªÀº ¿­¸° »óÅÂ·Î
+	string store_name; //ê°€ê²Œ ì´ë¦„ì„ string typeìœ¼ë¡œ ì €ì¥
+	string store_PH; //ê°€ê²Œ ì „í™”ë²ˆí˜¸ë¥¼ string typeìœ¼ë¡œ ì €ì¥
+	bool open = true; //open ìƒíƒœë¥¼ bool typeìœ¼ë¡œ. ì´ˆê¸°ê°’ì€ ì—´ë¦° ìƒíƒœë¡œ
 public:
 	void set_store(void) 
 	{
 		string in;
-		cout << "°¡°ÔÀÇ ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä" << endl;
+		cout << "ê°€ê²Œì˜ ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”" << endl;
 		cin >> in;
 		this->store_name = in;
-	}; //°¡°Ô ÀÌ¸§À» cinÀ¸·Î string typeÀ¸·Î ¹Ş¾Æ¼­ store_Ä¡name¿¡ ³Ö¾îÁØ´Ù. 
+	}; //ê°€ê²Œ ì´ë¦„ì„ cinìœ¼ë¡œ string typeìœ¼ë¡œ ë°›ì•„ì„œ store_ì¹˜nameì— ë„£ì–´ì¤€ë‹¤. 
 
 	void set_PH(void) {
 		string in;
-		cout << "°¡°ÔÀÇ ÀüÈ­¹øÈ£¸¦ÀÔ·ÂÇÏ¼¼¿ä" << endl;
+		cout << "ê°€ê²Œì˜ ì „í™”ë²ˆí˜¸ë¥¼ì…ë ¥í•˜ì„¸ìš”" << endl;
 		cin >> in;
 		this->store_PH = in;
-	}; //°¡°Ô ÀüÈ­¹øÈ£¸¦ cinÀ¸·Î string typeÀ¸·Î ¹Ş¾Æ¼­ store_PH¿¡ ³Ö¾îÁØ´Ù.
+	}; //ê°€ê²Œ ì „í™”ë²ˆí˜¸ë¥¼ cinìœ¼ë¡œ string typeìœ¼ë¡œ ë°›ì•„ì„œ store_PHì— ë„£ì–´ì¤€ë‹¤.
 
 	void store_open(void) {
 		if (store_open == false)
@@ -34,16 +34,17 @@ public:
 			this->store_open = false;
 		}
 		else {
-			cout << "Á¶¸®°¡ ¿Ï·áµÇÁö ¾ÊÀº Ç×¸ñÀÌ ÀÖ¾î °¡°Ô¹®À» ´İÀ» ¼ö ¾ø½À´Ï´Ù." << endl;
+			cout << "ì¡°ë¦¬ê°€ ì™„ë£Œë˜ì§€ ì•Šì€ í•­ëª©ì´ ìˆì–´ ê°€ê²Œë¬¸ì„ ë‹«ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤." << endl;
 		}
-	}; //openÀÌ false¸é true·Î, true¸é false·Î ¹Ù²ãÁØ´Ù.-true¿¡¼­ false·Î °¥ ¶§´Â cooking_overÀ» ½ÇÇØÇØ¼­ trueÀÏ¶§¸¸ ´İÀ» ¼ö ÀÖ´Ù. 
+	}; //openì´ falseë©´ trueë¡œ, trueë©´ falseë¡œ ë°”ê¿”ì¤€ë‹¤.-trueì—ì„œ falseë¡œ ê°ˆ ë•ŒëŠ” cooking_overì„ ì‹¤í•´í•´ì„œ trueì¼ë•Œë§Œ ë‹«ì„ ìˆ˜ ìˆë‹¤. 
 	bool checking(void) {
 		for (bool order_stat : order_list)
 			if (order_stat == false) {
-				cout << "¿Ï·áµÇÁö ¾ÊÀº Á¶¸®°¡ Á¸ÀçÇÕ´Ï´Ù." << endl;
+				cout << "ì™„ë£Œë˜ì§€ ì•Šì€ ì¡°ë¦¬ê°€ ì¡´ì¬í•©ë‹ˆë‹¤." << endl;
 				break;
 			}
-		cout << "¸ğµÎ Á¶¸®°¡ ¿Ï·áµÈ »óÅÂÀÔ´Ï´Ù." << endl;
+		cout << "ëª¨ë‘ ì¡°ë¦¬ê°€ ì™„ë£Œëœ ìƒíƒœì…ë‹ˆë‹¤." << endl;
 		return true;
-	}; //order_listÀÇ ÁÖ¹®¿Ï·á ¿©ºÎ¸¦ È®ÀÎÇÏ¿© ¸ğµÎ trueÀÏ¶§¸¸ true¸¦ return, ÇÏ³ª¶óµµ ÁÖ¹® ³²¾ÆÀÖÀ¸¸é false return
+	}; //order_listì˜ ì£¼ë¬¸ì™„ë£Œ ì—¬ë¶€ë¥¼ í™•ì¸í•˜ì—¬ ëª¨ë‘ trueì¼ë•Œë§Œ trueë¥¼ return, í•˜ë‚˜ë¼ë„ ì£¼ë¬¸ ë‚¨ì•„ìˆìœ¼ë©´ false return
+	//ì§€ê¸ˆ order_listì˜ ì›ì†Œì¤‘ ëª‡ë²ˆì§¸ í•­ëª©ì´ ì¡°ë¦¬ì™„ë£Œì¸ì§€ ëª°ë¼ ì¼ë‹¨ì€ ì €ë ‡ê²Œ í‘œí˜„í•´ë’€ìŠµë‹ˆë‹¤. ë‹´ë‹¹í•˜ì‹ ë¶„ 
 };
