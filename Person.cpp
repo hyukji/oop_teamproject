@@ -10,7 +10,6 @@ class Person {
 	string ID; //각 사람의 ID를 string type으로 저장
 	string password; //각 사람의 ID를 string type으로 저장
 	int type;
-	bool login = false;
 
 public:
 	Person() : ID{ "" }, password{ "" }, type{ 0 } { };
