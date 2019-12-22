@@ -4,26 +4,18 @@
 #include <vector>
 #include <map>
 using namespace std;
-
+class Login;
 
 class Person {
 	string ID; //각 사람의 ID를 string type으로 저장
 	string password; //각 사람의 ID를 string type으로 저장
 	int type;
+	bool login = false;
+
 public:
-	Person() {
-		this -> ID = "";
-		this-> password = "";
-		this-> type = 0;
-	};
-	
-	Person(string id, string pw, int rhs)
-	{
-		this->ID = id;
-		this->password = pw;
-		this->type = rhs;
-	};
-	
+	Person() : ID{ "" }, password{ "" }, type{ 0 } { };
+	Person(string id, string pw, int rhs) : ID{ id }, password{ pw }, type{rhs} {};
+
 	void set_ID(string id) 
 	{
 		this -> ID = id;
@@ -32,7 +24,7 @@ public:
 
 	string get_ID(void) 
 	{
-		cout << "당신의 ID는 " << ID << "입니다.";
+		cout << "당신 의 ID는 " << ID << "입니다.";
 		return ID;
 	}; //ID를 string type으로 return
 	
