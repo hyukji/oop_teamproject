@@ -1,6 +1,7 @@
 #include <iostream>
 #include "food.h"
 //choose_store는 main으로 다시 할게용...
+/*
 void Customer::choose_store(void) {//가게를 int type으로 선택해서 해당하는 가게를 store에 할당해준다.
 	cout << "Select restaurant!" << endl;
 	cout << "1. 더큰 도시락" << endl;
@@ -58,3 +59,4 @@ void Customer::alarm() {//(completed_order가 0이 아니면) 음식 완료 알람 및 compl
 		cout<< completed_order<<"order is done. You have "<< order_list->size() -completed_order<<"more order. Please wait more" << endl;
 	}
 }
+*/

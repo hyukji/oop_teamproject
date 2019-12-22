@@ -1,4 +1,6 @@
 #pragma once
+
+
 #include <string>
 #include <iostream>
 #include <vector>
@@ -6,12 +8,20 @@
 
 using namespace std;
 
+class Login;
 class Store_menu;
+class Store_status;
+class Cuisine;
+class Person;
+class Boss;
+class Customer;
 
 class Login {
 private:
-	map<string, Person&> m;
+	map<string, Person*> m;
 public:
+	Login() {}
+	void check_user(Person*);
 	Person& check_ID(); //ID에 맞는 객체 password와 맞춰보고 맞P으면 객체 return
 };
 
@@ -19,7 +29,8 @@ class Person {
 	string ID; //각 사람의 ID를 string type으로 저장
 	string password; //각 사람의 ID를 string type으로 저장
 	int type;
-public: 
+public:
+	Person(string id, string pw, int rhs, Login*);
 	void set_ID(string); //string을 입력받아 ID를 string type으로 저장
 	string get_ID(void); //ID를 string type으로 return
 	void set_password(string); //string을 입력받아 password를 string type으로 저장
@@ -35,14 +46,21 @@ class Boss : public Person {
 public:
 	Store_menu* sm;
 	Store_status* ss;
+
+	Boss(string, string, string, Login*);
 	void set_store(void); //가게 이름을 cin으로 string type으로 받아서 store_치name에 넣어준다. 
 	void set_PH(void); //가게 전화번호를 cin으로 string type으로 받아서 store_PH에 넣어준다.
-	void store_open(void); //open이 false면 true로, true면 false로 바꿔준다.-true에서 false로 갈 때는 cooking_over을 실해해서 true일때만 닫을 수 있다. 
-	bool checking(void); //order_list의 주문완료 여부를 확인하여 모두 true일때만 true를 return, 하나라도 주문 남아있으면 false return
+
+	void set_sm(Store_menu*);
+	void set_ss(Store_status*);
+
+
+		//void store_open(void); //open이 false면 true로, true면 false로 바꿔준다.-true에서 false로 갈 때는 cooking_over을 실해해서 true일때만 닫을 수 있다. 
+		//bool checking(void); //order_list의 주문완료 여부를 확인하여 모두 true일때만 true를 return, 하나라도 주문 남아있으면 false return
 };
 
-class Customer:public Person {
-	int completed_order=1; //주문 완료된 음식의 개수
+class Customer :public Person {
+	int completed_order = 1; //주문 완료된 음식의 개수
 	Boss* store; //고객이 무슨 가게를 선택했는지 
 	vector<int> order_list; //고객의 주문내역을 int array type 으로 저장
 public:
@@ -67,7 +85,7 @@ public:
 class Cuisine {
 	string order_cus; //주문자에 대한 정보
 	string order_menu; //주문한 메뉴에 대한 정보
-	bool complete = 0; //요리가 다 되었는데 T/F
+	int complete = 0; //요리가 다 되었는데 T/F
 public:
 	Cuisine(string cust, string cus_m, int b)
 		: order_cus{ cust }, order_menu{ cus_m }, complete{ b } {}

@@ -1,28 +1,39 @@
 #pragma once
+#include "food.h"
+
 #include <string>
 #include <iostream>
-#include <vector>
-#include <map>
-#include "Person.cpp"
 using namespace std;
 
-class Boss : public Person {
-	string store_name; //가게 이름을 string type으로 저장
-	string store_PH; //가게 전화번호를 string type으로 저장
-	bool open = true; //open 상태를 bool type으로. 초기값은 열린 상태로
-public:
-	void set_store(void) 
+	//생성자
+	Boss::Boss(string name, string ph, string pw, Login* login) : Person(name, pw, 0, login) {
+		this->store_name = name;
+		this->store_PH = ph;
+	}
+
+	void Boss::set_store(void)
 	{
-		string in;
-		cout << "가게의 이름을 입력하세요" << endl;
-		cin >> in;
-		this->store_name = in;
+		cout << "원하시는 가게의 이름을 입력하세요\n";
+
+		string input_name;
+		cin >> input_name;
+		this->store_name = input_name;
 	}; //가게 이름을 cin으로 string type으로 받아서 store_치name에 넣어준다. 
 
-	void set_PH(void) {
+	void Boss::set_PH(void) {
 		string in;
 		cout << "가게의 전화번호를입력하세요" << endl;
 		cin >> in;
 		this->store_PH = in;
-	}; //가게 전화번호를 cin으로 string type으로 받아서 store_PH에 넣어준다.
-};
+		; //가게 전화번호를 cin으로 string type으로 받아서 store_PH에 넣어준다.
+	}
+	void Boss::set_sm(Store_menu* rsm)
+	{
+		this->sm = rsm;
+	}
+
+	void Boss::set_ss(Store_status* rss)
+	{
+		ss = rss;
+	}
+

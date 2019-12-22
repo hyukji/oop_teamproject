@@ -12,8 +12,9 @@ class Cuisine;
 
 void Store_status::take_order(Customer& cus)
 {
-	for (int i = 0; i < cus.order_list.size; i++) {
-		int a = cus.order_list.pop_back;
+	for (int i = 0; i < cus.order_list.size(); i++) {
+		int a = cus.order_list[cus.order_list.size()];
+		cus.order_list.pop_back();
 		string cus_me = cus.store->sm->get_menu(a);
 		string cus_id = cus.Person::get_ID();
 		Cuisine* cu = new Cuisine(cus_id, cus_me, 0);  //이거 new로 동적할당해도 되나???
@@ -61,5 +62,5 @@ void Cuisine::change_complete(void)
 /////////////////////////////////////////////////////////////
 string Store_menu::get_menu(int n)
 {
-	return st_menu.at[n];
+	return st_menu[n];
 }

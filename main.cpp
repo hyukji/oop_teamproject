@@ -1,22 +1,27 @@
 #include "food.h"
 
+
+#include <string>
 #include <iostream>
-#include <Windows.h>
+#include <vector>
+#include <map>
+
 using namespace std;
 
 
 int main() {
 
 	int selnum;
+	
+	Login* login;
+	//Boss 3개와 그에 맞는 person까지 생성.
+	Boss b_tk("더큰도시락", "053-1234-1234","1111", login );
+	Boss b_kh("김밥천국", "053-1234-4567","2222", login );
+	Boss b_hd("핫도그", "053-7894-4561", "3333", login );
 
-	Boss b_tk("더큰도시락", "1111", 0);
-	Boss b_kh("김밥천국", "2222", 0);
-	Boss b_hd("핫도그", "3333", 0);
-	// 사장 2개 메뉴랑 상태까지 해서 다 생성해놓기.
 
 	//각자 메뉴랑 상태 넣어주는 함수들.
-
-	Login login;
+	 
 	
 	while (1) {
 
@@ -31,11 +36,11 @@ int main() {
 			break;
 		case 2:
 			// 로그인 하는 과정
-			Person& using_user = login.check_ID();
+			Person& using_user = login->check_ID();
 
 
 			//고객 사장 구분해주기
-			if (using_user.get_type == 0) {
+			if (using_user.get_type() == 0) {
 				//로그인 한 user가 고객인 경우
 				cout << "Hello, Customer!  Your ID is " << using_user.get_ID() << endl;
 				Customer& user_cus = ((Customer&)using_user);
