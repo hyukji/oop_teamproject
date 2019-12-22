@@ -3,12 +3,10 @@
 #include <iomanip>
 #include <map>
 
-
 class Store_menu;
 class Customer;
 class Store_status;
 class Cuisine;
-
 
 ///////////////////////////////////////////////////////////
 
@@ -16,7 +14,7 @@ void Store_status::take_order(Customer& cus)
 {
 	for (int i = 0; i < cus.order_list.size; i++) {
 		int a = cus.order_list.pop_back;
-		string cus_me = cus.store->get_menu(a);
+		string cus_me = cus.store->sm->get_menu(a);
 		string cus_id = cus.Person::get_ID();
 		Cuisine* cu = new Cuisine(cus_id, cus_me, 0);  //이거 new로 동적할당해도 되나???
 
@@ -35,10 +33,8 @@ void Store_status::show_list(void)
 	}
 }
 
-void Store_status::cooking_over(void)
+void Store_status::cooking_over(int n)
 {
-	int n;
-	cin >> n;
 	m_Cuisine.find(n)->second->change_complete();
 	cout << n << "번째 주문이 완료 되었습니다." << endl;
 }
@@ -57,10 +53,9 @@ string Cuisine::get_order_menu(void)
 	return order_menu;
 }
 
-bool Cuisine::change_complete(void)
+void Cuisine::change_complete(void)
 {
 	complete = 1;
-	return complete;
 }
 
 /////////////////////////////////////////////////////////////
