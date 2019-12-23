@@ -60,7 +60,7 @@ public:
 };
 
 class Customer :public Person {
-	int completed_order = 1; //주문 완료된 음식의 개수
+	int completed_order=0; //주문 완료된 음식의 개수
 	Boss* store; //고객이 무슨 가게를 선택했는지 
 	vector<int> order_list; //고객의 주문내역을 int array type 으로 저장
 public:
@@ -74,7 +74,7 @@ public:
 };
 
 class Store_status {
-	int order_num;
+	int order_num=1;
 	map<int, Cuisine*> m_Cuisine;
 public:
 	void take_order(Customer& cus);//고객으로부터 주문을 받으면 orderlist를 분해해서 cousine을 각각 생성하고 m_cousine에 주문번호랑 같이 입력. orderlist에 있는거 다 넣으면 주문번호+1
@@ -82,19 +82,18 @@ public:
 	void cooking_over(int); //show_list로 order_list을 출력해준 후 cin으로 int값을 받아 해당하는 번호의 주문 상태를 false에서 true로 바꿔준다. Customer의 completed_order+=1
 };
 
-class Cuisine {
-	string order_cus; //주문자에 대한 정보
+class Cuisine {	
+	Customer& order_cus; //주문자에 대한 정보
 	string order_menu; //주문한 메뉴에 대한 정보
 	int complete = 0; //요리가 다 되었는데 T/F
 public:
-	Cuisine(string cust, string cus_m, int b)
+	Cuisine(Customer& cust, string cus_m, int b)
 		: order_cus{ cust }, order_menu{ cus_m }, complete{ b } {}
-	string get_order_cus(void); //order_cus를 string type으로 return
+	Customer& get_order_cus(void); //order_cus를 string type으로 return
 	string get_order_menu(void); //order_menu를 string type으로 return
 	void change_complete(void); //complete 상태를 t/f로 return
 
 };
-
 class Store_menu {
 	vector<string[4]> menu; // 메뉴를 vector array type으로 저장한다. 번호, 이름, 가격, 예상 조리시간
 public:
@@ -103,7 +102,9 @@ public:
 	void add_menu(void); //추가할 메뉴를 cin으로 입력받아서 menu에 넣어준다. 
 	void rvs_menu(void); //메뉴를 일단 보여 준 후 수정할 메뉴의 번호를 cin으로 입력받은 후 다시 string을 cin으로 받아서 menu에 넣어준다. 
 	void del_menu(void); //메뉴를 일단 보여 준 후 삭제할 메뉴의 번호를 cin으로 입력받아 삭제한다. 
-	void show_menu(void); //고객이 메뉴를 볼 수 있도록 연결해준다. 
-	friend void Customer::show_order(Store_menu);
-};
+	void show_menu(void); //고객이 메뉴를 볼 수 있도록 연결해준다.
+	void load_menu();
+	void save_menu();
+//	friend void Customer::show_order(Store_menu);
 
+};
