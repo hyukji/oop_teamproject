@@ -2,6 +2,7 @@
 #include "food.h"
 //choose_store는 main으로 다시 할게용...
 /*
+ddd
 void Customer::choose_store(void) {//가게를 int type으로 선택해서 해당하는 가게를 store에 할당해준다.
 	cout << "Select restaurant!" << endl;
 	cout << "1. 더큰 도시락" << endl;
