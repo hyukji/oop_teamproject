@@ -14,8 +14,8 @@ void Customer::make_order(Store_status ss) { //메뉴를 하나씩 입력받아 array로 만
 		cout << "Select Menu! if you want to end order, press 0";
 		my_order = ss.order_num;
 	}
-
 }
+
 void Customer::show_order(Store_menu m, Store_status ss) {// 본인이 무엇을 주문했는지 보여준다. 사람이 몇명있는지.??????
 	cout << "Your ordered: ";
 	for (int i = 0; i < order_list.size(); i++) {
