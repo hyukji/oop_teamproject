@@ -11,9 +11,9 @@ using namespace std;
 
 class Store_menu {
 	vector<vector<string>> menu; // 메뉴를 vector array type으로 저장한다. 번호, 이름, 가격, 예상 조리시간
-	vector<string> st_menu;
 
 public:
+	vector<string> st_menu;
 	Store_menu() {
 	}
 	Store_menu(string file_name) {
@@ -67,12 +67,18 @@ public:
 		cin >> index;
 		cout << index << "번 메뉴를 수정합니다.";
 		index--;
+		string menu_name;
 		cout << "메뉴 이름: ";
-		cin >> menu[index][1];
+		cin >> menu_name;
+		if (menu_name != menu[index][1]) {
+			st_menu[index] = menu_name;
+			menu[index][1] = menu_name;
+		}
 		cout << "메뉴 가격: ";
 		cin >> menu[index][2];
 		cout << "예상 조리시간: ";
 		cin >> menu[index][3];
+
 
 		show_menu();
 	}
@@ -90,6 +96,7 @@ public:
 		else if (input_number == menu.size())
 		{
 			menu.pop_back();
+			st_menu.pop_back();
 		}
 		else
 		{
@@ -99,17 +106,20 @@ public:
 				for (int i = 1; i < temp.size(); i++) {
 					temp[i][0] = to_string(stoi(temp[i][0]) - 1);
 					menu.push_back(temp[i]);
+					st_menu.push_back(temp[i][1]);
 				}
 			}
 			else {
 				for (int i = 0; i < input_number - 1; i++)
 				{
 					menu.push_back(temp[i]);
+					st_menu.push_back(temp[i][1]);
 				}
 				for (int i = input_number; i < temp.size(); i++)
 				{
 					temp[i][0] = to_string(stoi(temp[i][0]) - 1);
 					menu.push_back(temp[i]);
+					st_menu.push_back(temp[i][1]);
 				}
 			}
 		}
@@ -173,6 +183,7 @@ public:
 				info_of_a_menu.push_back(price);
 				info_of_a_menu.push_back(time);
 				menu.push_back(info_of_a_menu);
+				st_menu.push_back(name);
 			}
 		}
 		show_menu();
