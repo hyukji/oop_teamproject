@@ -7,8 +7,8 @@ using namespace std;
 
 //Person::Person() : ID{ "" }, password{ "" }, type{ 0 } { };
 Person::Person(string id, string pw, int rhs, Login* login) : ID{ id }, password{ pw }, type{rhs} {
-	login->check_user(this);
-
+	if (rhs != 2) {	login->check_user(this); }
+	else {}
 };
 
 	void Person::set_ID(string id)
@@ -19,7 +19,7 @@ Person::Person(string id, string pw, int rhs, Login* login) : ID{ id }, password
 
 	string Person::get_ID(void)
 	{
-		cout << "your ID is " << ID << ".\n";
+		//cout << "your ID is " << ID << ".\n";
 		return ID;
 	}; //ID를 string type으로 return
 	

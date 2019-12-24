@@ -66,11 +66,8 @@ class Customer :public Person {
 	vector<int> order_list; //고객의 주문내역을 int array type 으로 저장
 public:
 	friend class Store_status;
-
-	Customer(string id, string pw, Login* login) : Person(id, pw, 1, login) {
-		
-	};
-
+	Customer(int,string,string,Login*);
+	Customer(string id, string pw, Login* login);
 
 	Boss* getstore() { return store; };
 	void setstore(Boss* b) { store = b; };
@@ -100,6 +97,7 @@ public:
 		: order_cus{ cust }, order_menu{ cus_m }, complete{ b } {}
 	Customer& get_order_cus(void); //order_cus를 string type으로 return
 	string get_order_menu(void); //order_menu를 string type으로 return
+	int get_order_complete();
 	void change_complete(void); //complete 상태를 t/f로 return
 	friend void Customer::show_order(Store_menu, Store_status);
 };
@@ -109,7 +107,7 @@ public:
 	Store_menu();
 	Store_menu(string file_name);
 
-	vector<string> st_menu;
+	vector<string> st_menu = {"김치찌개","김치볶음밥","소금구이"};
 	string get_menu(int);
 	void add_menu(void); //추가할 메뉴를 cin으로 입력받아서 menu에 넣어준다. 
 	void rvs_menu(void); //메뉴를 일단 보여 준 후 수정할 메뉴의 번호를 cin으로 입력받은 후 다시 string을 cin으로 받아서 menu에 넣어준다. 
@@ -117,6 +115,6 @@ public:
 	void show_menu(void); //고객이 메뉴를 볼 수 있도록 연결해준다.
 	void load_menu();
 	void save_menu();
-	friend void Customer::show_order(Store_menu, Store_status);
+	//friend void Customer::show_order(Store_menu, Store_status);
 
 };

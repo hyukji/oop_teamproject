@@ -12,7 +12,9 @@ using namespace std;
 		string a = user->get_ID();
 		if (m.count(a) == 0) {
 			m.insert(pair<string, Person*>(a, user));
-		}// 유저가 map에 등록되어있지 않은 경우 추가해줍니다.
+		
+		}
+		// 유저가 map에 등록되어있지 않은 경우 추가해줍니다.
 		/*else {
 			map<string, Person*>::iterator index=m.begin() ;
 			while ((index = find(index, m.end(),a)) != m.end())
@@ -27,7 +29,6 @@ using namespace std;
 
 	Person& Login::check_ID()
 	{
-		cout << "2222222222222222222222\n";
 		string input_id;
 		string input_pw;
 		
@@ -38,19 +39,14 @@ using namespace std;
 			cout << "nope" << endl;
 		}
 		else {
-			return *(itr->second);
-
-			//임의로 확인안하고 아이디만 쓰면 로그인 되게 해놓았음.
-
-		/*	cout << "input your pw\n";
+			cout << "input your pw\n";
 			cin >> input_pw;
-			cout << m[input_id]->get_password() << endl;
 			if (m[input_id]->get_password() == input_pw) {
 				return *m[input_id];
 			}
 			else {
 				cout << "wrongwn";
-			}*/
+			}
 		}
 	}; //ID에 맞는 객체 password와 맞춰보고 맞으면 객체 return
 	

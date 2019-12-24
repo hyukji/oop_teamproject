@@ -18,7 +18,16 @@ int main() {
 	Boss b_kh("김밥천국", "053-1234-4567","2222", login );
 	Boss b_hd("핫도그", "053-7894-4561", "3333", login );
 
-	Customer("manager", "0000", login);
+	b_tk.sm = new Store_menu("menu");
+	b_kh.sm = new Store_menu("menu");
+	b_hd.sm = new Store_menu("menu");
+
+	b_tk.ss = new Store_status();
+	b_kh.ss = new Store_status();
+	b_hd.ss = new Store_status();
+
+
+	Customer* cus = new Customer("manager", "0000", login);
 	//각자 메뉴랑 상태 넣어주는 함수들.
 	 
 	
@@ -26,12 +35,14 @@ int main() {
 
 		//아이디 로그인 할지 만들지.
 		cout << "What do you want to do? Select a number." << endl;
-		cout << "1. Make new account" << endl << "2. Login" << endl;
+		cout << "1. Make new account" << endl << "2. Login" << endl << "0. exit\n";
 		cin >> selnum;
+		if (selnum == 0) { break; }
+
 		switch (selnum) {
 		case 1:
 			// 새로 계정 만들어 주는 거 
-			continue;
+		//	Customer * cus = new Customer("manager", "0000", login);
 			break;
 		case 2:
 			// 로그인 하는 과정
@@ -39,7 +50,7 @@ int main() {
 
 
 			//고객 사장 구분해주기
-			if (using_user.get_type() == 0) {
+			if (using_user.get_type() == 1) {
 				//로그인 한 user가 고객인 경우
 				cout << "Hello, Customer!  Your ID is " << using_user.get_ID() << endl;
 				Customer& user_cus = ((Customer&)using_user);
@@ -58,6 +69,9 @@ int main() {
 						break;
 					case 2:
 						user_cus.setstore(&b_kh);
+						break;
+					case 3:
+						user_cus.setstore(&b_hd);
 						break;
 					}
 
@@ -80,7 +94,6 @@ int main() {
 					}
 
 					//메뉴 보고 숫자 입력받아 주문하는 과정
-					cout << "Select dish u want\n";
 					user_cus.make_order(*cus_ss);
 					cus_ss->take_order(user_cus);
 
@@ -143,7 +156,7 @@ int main() {
 
 		}
 
-		break; // 프로그램 종료하는 break
+		//break; // 프로그램 종료하는 break
 	}
 
 	
