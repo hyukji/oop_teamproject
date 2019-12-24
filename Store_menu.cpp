@@ -1,7 +1,3 @@
-
-#include "food.h"
-
-
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -13,9 +9,12 @@
 
 using namespace std;
 
-Store_menu::Store_menu() {
+class Store_menu {
+	vector<vector<string>> menu; // 메뉴를 vector array type으로 저장한다. 번호, 이름, 가격, 예상 조리시간
+public:
+	Store_menu() {
 	}
-Store_menu::Store_menu(string file_name) {
+	Store_menu(string file_name) {
 		std::ifstream ift(file_name + ".txt", std::ios::in);
 		while (ift)
 		{
@@ -42,7 +41,7 @@ Store_menu::Store_menu(string file_name) {
 		}
 		show_menu();
 	}
-	void Store_menu::add_menu(void) //추가할 메뉴를 cin으로 입력받아서 menu에 넣어준다. 	
+	void add_menu(void) //추가할 메뉴를 cin으로 입력받아서 menu에 넣어준다. 	
 	{
 		string input_menu[4];
 		input_menu[0] = to_string(menu.size() + 1);
@@ -58,7 +57,7 @@ Store_menu::Store_menu(string file_name) {
 		}
 		menu.push_back(input_menu_vector);
 	}
-	void Store_menu::rvs_menu(void) //메뉴를 일단 보여 준 후 수정할 메뉴의 번호를 cin으로 입력받은 후 다시 string을 cin으로 받아서 menu에 넣어준다. 
+	void rvs_menu(void) //메뉴를 일단 보여 준 후 수정할 메뉴의 번호를 cin으로 입력받은 후 다시 string을 cin으로 받아서 menu에 넣어준다. 
 	{
 		int index;
 		cout << "수정하고자 하는 메뉴 번호: ";
@@ -74,7 +73,7 @@ Store_menu::Store_menu(string file_name) {
 
 		show_menu();
 	}
-	void Store_menu::del_menu(void) //메뉴를 일단 보여 준 후 삭제할 메뉴의 번호를 cin으로 입력받아 삭제한다. 
+	void del_menu(void) //메뉴를 일단 보여 준 후 삭제할 메뉴의 번호를 cin으로 입력받아 삭제한다. 
 	{
 		int input_number;
 		cout << "지우고자 하는 메뉴 번호: ";
@@ -113,7 +112,7 @@ Store_menu::Store_menu(string file_name) {
 		}
 
 	}
-	void Store_menu::show_menu(void) //고객이 메뉴를 볼 수 있도록 연결해준다.
+	void show_menu(void) //고객이 메뉴를 볼 수 있도록 연결해준다.
 	{
 		cout.width(12);
 		cout << "식별번호";
@@ -137,7 +136,7 @@ Store_menu::Store_menu(string file_name) {
 			cout << endl;
 		}
 	}
-	void Store_menu::load_menu()
+	void load_menu()
 	{
 		cout << "경고! 메뉴가 텍스트 파일 기준으로 변경됩니다." << endl << "메뉴를 불러오지 않으시려면 0번으로 되돌아가시고, 메뉴를 불러오려면 아무 키나 누르세요." << endl;
 		int input_check;
@@ -175,10 +174,11 @@ Store_menu::Store_menu(string file_name) {
 		}
 		show_menu();
 	}
-	void Store_menu::save_menu()
+	void save_menu()
 	{
 		std::ofstream oft("menu.txt", std::ios::trunc);
 		for (int i = 0; i < menu.size(); i++) {
 			oft << setw(12) << menu[i][0] << setw(20) << menu[i][1] << setw(20) << menu[i][2] << setw(20) << menu[i][3] << "\n";
 		}
 	}
+};

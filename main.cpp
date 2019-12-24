@@ -1,5 +1,6 @@
 #include "food.h"
 
+
 #include <string>
 #include <iostream>
 #include <vector>
@@ -9,16 +10,16 @@ using namespace std;
 
 
 int main() {
+
 	int selnum;
 	
-	Login log_in;
-	Login* login = &log_in;
+	Login* login;
 	//Boss 3개와 그에 맞는 person까지 생성.
 	Boss b_tk("더큰도시락", "053-1234-1234","1111", login );
 	Boss b_kh("김밥천국", "053-1234-4567","2222", login );
 	Boss b_hd("핫도그", "053-7894-4561", "3333", login );
 
-	Customer("manager", "0000", login);
+
 	//각자 메뉴랑 상태 넣어주는 함수들.
 	 
 	
@@ -81,11 +82,11 @@ int main() {
 
 					//메뉴 보고 숫자 입력받아 주문하는 과정
 					cout << "Select dish u want\n";
-					user_cus.make_order(*cus_ss);
+					user_cus.make_order();
 					cus_ss->take_order(user_cus);
 
 					//주문 잘 들어갔나 확인알림
-					user_cus.show_order(*cus_sm,*cus_ss);
+					user_cus.show_order(*cus_sm);
 					//고객 종료하는 
 				}
 

@@ -20,7 +20,7 @@ class Login {
 private:
 	map<string, Person*> m;
 public:
-	Login() { cout << "로그인 생성 완료\n;"; }
+	Login() {}
 	void check_user(Person*);
 	Person& check_ID(); //ID에 맞는 객체 password와 맞춰보고 맞P으면 객체 return
 };
@@ -61,17 +61,11 @@ public:
 
 class Customer :public Person {
 	int completed_order = 0; //주문 완료된 음식의 개수
-	int my_order=0;
+	int my_order;
 	Boss* store; //고객이 무슨 가게를 선택했는지 
 	vector<int> order_list; //고객의 주문내역을 int array type 으로 저장
 public:
 	friend class Store_status;
-
-	Customer(string id, string pw, Login* login) : Person(id, pw, 1, login) {
-		
-	};
-
-
 	Boss* getstore() { return store; };
 	void setstore(Boss* b) { store = b; };
 	void make_order(Store_status); // 가게의 고유번호를 바탕으로 메뉴를 하나씩 입력받아 array로 만들어 order[]에 넣어준다. 
@@ -104,11 +98,8 @@ public:
 	friend void Customer::show_order(Store_menu, Store_status);
 };
 class Store_menu {
-	vector<vector<string>> menu; // 메뉴를 vector array type으로 저장한다. 번호, 이름, 가격, 예상 조리시간
+	vector<string[4]> menu; // 메뉴를 vector array type으로 저장한다. 번호, 이름, 가격, 예상 조리시간
 public:
-	Store_menu();
-	Store_menu(string file_name);
-
 	vector<string> st_menu;
 	string get_menu(int);
 	void add_menu(void); //추가할 메뉴를 cin으로 입력받아서 menu에 넣어준다. 
