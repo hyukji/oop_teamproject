@@ -19,10 +19,7 @@ void Customer::make_order(Store_status ss) { //¸Ş´º¸¦ ÇÏ³ª¾¿ ÀÔ·Â¹Ş¾Æ array·Î ¸¸
 		int select_menu;
 		cin >> select_menu;
 		if (select_menu == 0) {
-<<<<<<< HEAD
 			if (order_list.size() == 0) { break; }
-=======
->>>>>>> 608d75b11d7ed7f9636889a980146692f05b4513
 			cout << "Your order is ready. Please wait.I will call you when the food is ready\n" << endl;
 			break;
 		}
@@ -30,10 +27,7 @@ void Customer::make_order(Store_status ss) { //¸Ş´º¸¦ ÇÏ³ª¾¿ ÀÔ·Â¹Ş¾Æ array·Î ¸¸
 		cout << "Select Menu! if you want to end order, press 0\n";
 		my_order = ss.order_num;
 	}
-<<<<<<< HEAD
 	orders += order_list.size();
-=======
->>>>>>> 608d75b11d7ed7f9636889a980146692f05b4513
 }
 
 void Customer::show_order(Store_menu m, Store_status ss) {// º»ÀÎÀÌ ¹«¾ùÀ» ÁÖ¹®Çß´ÂÁö º¸¿©ÁØ´Ù. »ç¶÷ÀÌ ¸î¸íÀÖ´ÂÁö.??????
@@ -41,7 +35,6 @@ void Customer::show_order(Store_menu m, Store_status ss) {// º»ÀÎÀÌ ¹«¾ùÀ» ÁÖ¹®Ç
 	for (int i = 0; i < order_list.size(); i++) {
 		int a = order_list[i] - 1;
 		string cus_me = store->sm->get_menu(a);
-<<<<<<< HEAD
 		cout << cus_me << " ";
 		string b[2];
 		b[0] = cus_me;
@@ -51,10 +44,6 @@ void Customer::show_order(Store_menu m, Store_status ss) {// º»ÀÎÀÌ ¹«¾ùÀ» ÁÖ¹®Ç
 			orvector.push_back(b[j]);
 		}
 		order_check.push_back(orvector);
-=======
-
-		cout << cus_me << " ";
->>>>>>> 608d75b11d7ed7f9636889a980146692f05b4513
 	}
 	cout << endl;
 	int a = 0;
@@ -64,14 +53,10 @@ void Customer::show_order(Store_menu m, Store_status ss) {// º»ÀÎÀÌ ¹«¾ùÀ» ÁÖ¹®Ç
 			a += 1;
 		
 	}
-<<<<<<< HEAD
 	if (a == 0 || a == 1) {
 		cout << "There is " << a << " order before your order" << endl;
 	}
 	else { cout << "There are " << a << " orders before your order"; }
-=======
-	cout << "´ç½Å Àü¿¡ Ã³¸®µÇÁö ¾ÊÀº ÁÖ¹®ÀÌ" << a-1 << "°³ ÀÖ½À´Ï´Ù.\n";
->>>>>>> 608d75b11d7ed7f9636889a980146692f05b4513
 }
 
 void Customer::check_menu(void) {
