@@ -44,7 +44,8 @@ void Store_status::cooking_over(int n)
 {
 	m_Cuisine.find(n)->second->change_complete();
 	//m_Cuisine.find(n)->second->get_order_cus().end_list.push_back(a);
-
+	string a = m_Cuisine.find(n)->second->get_order_menu(); //이소진이 추가한거임
+	m_Cuisine.find(n)->second->get_order_cus().end_list.push_back(a); //이소진이 추가한거임
 }
 
 ///////////////////////////////////////////////////////////
