@@ -13,7 +13,7 @@ using namespace std;
 
 	void Boss::set_store(void)
 	{
-		cout << "원하시는 가게의 이름을 입력하세요\n";
+		cout << "input Store name\n";
 
 		string input_name;
 		cin >> input_name;
@@ -22,10 +22,14 @@ using namespace std;
 
 	void Boss::set_PH(void) {
 		string in;
-		cout << "가게의 전화번호를입력하세요" << endl;
+		cout << "input Store PH" << endl;
 		cin >> in;
 		this->store_PH = in;
 		; //가게 전화번호를 cin으로 string type으로 받아서 store_PH에 넣어준다.
+	}
+	string Boss::get_name(void)
+	{
+		return this->store_name;
 	}
 	void Boss::set_sm(Store_menu* rsm)
 	{

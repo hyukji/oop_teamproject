@@ -42,7 +42,7 @@ Store_menu::Store_menu(string file_name) {
 				st_menu.push_back(name);
 			}
 		}
-		show_menu();
+	//	show_menu();
 	}
 	void Store_menu::add_menu(void) //추가할 메뉴를 cin으로 입력받아서 menu에 넣어준다. 	
 	{

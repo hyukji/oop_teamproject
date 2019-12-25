@@ -10,8 +10,9 @@ class Cuisine;
 
 ///////////////////////////////////////////////////////////
 
-void Store_status::take_order(Customer& cus)
+int Store_status::take_order(Customer& cus)
 {
+	if (cus.order_list.size() == 0) { cout << "주문이 취소 되었습니다.\n"; return 0; }
 	for (int i = 0; i < cus.order_list.size(); i++) {
 		int a = cus.order_list[i]-1;
 		string cus_me = cus.store->sm->get_menu(a);
@@ -22,18 +23,19 @@ void Store_status::take_order(Customer& cus)
 		m_Cuisine.insert(pair<int, Cuisine*>(order_num, cu));
 
 		order_num += 1;
-		cout <<  cus_me << " 주문이 완료 되었습니다." << endl;
+		cout <<  cus_me << " 주문이 완료 되었습니다.\n" << endl;
 	}
+	return 1;
 }
 
 void Store_status::show_list(void)
 {
 	cout << " 주문 명단 " << endl;
-	cout << setw(10) << "번호" << setw(10) << "주문자" << setw(10) << "메뉴" << setw(10) << endl;
+	cout << setw(10) << "번호" << setw(20) << "주문자" << setw(20) << "메뉴" << setw(20) << endl;
 	for (auto it = m_Cuisine.begin(); it != m_Cuisine.end(); it++) {
 		if (it->second->get_order_complete() == 0) {
-			cout << setw(10) << it->first << setw(10) << it->second->get_order_cus().get_ID();
-			cout << setw(10) << it->second->get_order_menu() << endl;
+			cout << setw(10) << it->first << setw(20) << it->second->get_order_cus().get_ID();
+			cout << setw(20) << it->second->get_order_menu() << endl;
 		}
 	}
 }
@@ -41,8 +43,7 @@ void Store_status::show_list(void)
 void Store_status::cooking_over(int n)
 {
 	m_Cuisine.find(n)->second->change_complete();
-	m_Cuisine.find(n)->second->get_order_cus().completed_order += 1;
-
+	//m_Cuisine.find(n)->second->get_order_cus().end_list.push_back(a);
 
 }
 

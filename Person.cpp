@@ -19,14 +19,14 @@ Person::Person(string id, string pw, int rhs, Login* login) : ID{ id }, password
 
 	string Person::get_ID(void)
 	{
-		//cout << "your ID is " << ID << ".\n";
+		//cout << "your ID is " << ID << ".\n";	
 		return ID;
 	}; //ID를 string type으로 return
 	
 	void Person::set_password(string pw)
 	{
 		this-> password = pw;
-		cout << "your PW is " << pw << ".\n";
+		//cout << "your PW is " << pw << ".\n";
 	}; //string을 입력받아 password를 string type으로 저장
 
 	string Person::get_password(void)
