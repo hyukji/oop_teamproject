@@ -39,19 +39,20 @@ Store_menu::Store_menu(string file_name) {
 				info_of_a_menu.push_back(price);
 				info_of_a_menu.push_back(time);
 				menu.push_back(info_of_a_menu);
+				st_menu.push_back(name);
 			}
 		}
 		show_menu();
 	}
-	void Store_menu::add_menu(void) //Ãß°¡ÇÒ ¸Ş´º¸¦ cinÀ¸·Î ÀÔ·Â¹Ş¾Æ¼­ menu¿¡ ³Ö¾îÁØ´Ù. 	
+	void Store_menu::add_menu(void) //ì¶”ê°€í•  ë©”ë‰´ë¥¼ cinìœ¼ë¡œ ì…ë ¥ë°›ì•„ì„œ menuì— ë„£ì–´ì¤€ë‹¤. 	
 	{
 		string input_menu[4];
 		input_menu[0] = to_string(menu.size() + 1);
-		cout << "¸Ş´º ÀÌ¸§: ";
+		cout << "ë©”ë‰´ ì´ë¦„: ";
 		cin >> input_menu[1];
-		cout << "¸Ş´º °¡°İ: ";
+		cout << "ë©”ë‰´ ê°€ê²©: ";
 		cin >> input_menu[2];
-		cout << "¿¹»ó Á¶¸®½Ã°£: ";
+		cout << "ì˜ˆìƒ ì¡°ë¦¬ì‹œê°„: ";
 		cin >> input_menu[3];
 		vector<string> input_menu_vector;
 		for (int i = 0; i < 4; i++) {
@@ -60,34 +61,34 @@ Store_menu::Store_menu(string file_name) {
 		menu.push_back(input_menu_vector);
 		st_menu.push_back(input_menu[1]);
 	}
-	void Store_menu::rvs_menu(void) //¸Ş´º¸¦ ÀÏ´Ü º¸¿© ÁØ ÈÄ ¼öÁ¤ÇÒ ¸Ş´ºÀÇ ¹øÈ£¸¦ cinÀ¸·Î ÀÔ·Â¹ŞÀº ÈÄ ´Ù½Ã stringÀ» cinÀ¸·Î ¹Ş¾Æ¼­ menu¿¡ ³Ö¾îÁØ´Ù. 
+	void Store_menu::rvs_menu(void) //ë©”ë‰´ë¥¼ ì¼ë‹¨ ë³´ì—¬ ì¤€ í›„ ìˆ˜ì •í•  ë©”ë‰´ì˜ ë²ˆí˜¸ë¥¼ cinìœ¼ë¡œ ì…ë ¥ë°›ì€ í›„ ë‹¤ì‹œ stringì„ cinìœ¼ë¡œ ë°›ì•„ì„œ menuì— ë„£ì–´ì¤€ë‹¤. 
 	{
 		int index;
-		cout << "¼öÁ¤ÇÏ°íÀÚ ÇÏ´Â ¸Ş´º ¹øÈ£: ";
+		cout << "ìˆ˜ì •í•˜ê³ ì í•˜ëŠ” ë©”ë‰´ ë²ˆí˜¸: ";
 		cin >> index;
-		cout << index << "¹ø ¸Ş´º¸¦ ¼öÁ¤ÇÕ´Ï´Ù.";
+		cout << index << "ë²ˆ ë©”ë‰´ë¥¼ ìˆ˜ì •í•©ë‹ˆë‹¤.";
 		index--;
 		string menu_name;
-		cout << "¸Ş´º ÀÌ¸§: ";
+		cout << "ë©”ë‰´ ì´ë¦„: ";
 		cin >> menu_name;
 		if (menu_name != menu[index][1]) {
 			st_menu[index] = menu_name;
 			menu[index][1] = menu_name;
 		}
-		cout << "¸Ş´º °¡°İ: ";
+		cout << "ë©”ë‰´ ê°€ê²©: ";
 		cin >> menu[index][2];
-		cout << "¿¹»ó Á¶¸®½Ã°£: ";
+		cout << "ì˜ˆìƒ ì¡°ë¦¬ì‹œê°„: ";
 		cin >> menu[index][3];
 
 
 		show_menu();
 	}
-	void Store_menu::del_menu(void) //¸Ş´º¸¦ ÀÏ´Ü º¸¿© ÁØ ÈÄ »èÁ¦ÇÒ ¸Ş´ºÀÇ ¹øÈ£¸¦ cinÀ¸·Î ÀÔ·Â¹Ş¾Æ »èÁ¦ÇÑ´Ù. 
+	void Store_menu::del_menu(void) //ë©”ë‰´ë¥¼ ì¼ë‹¨ ë³´ì—¬ ì¤€ í›„ ì‚­ì œí•  ë©”ë‰´ì˜ ë²ˆí˜¸ë¥¼ cinìœ¼ë¡œ ì…ë ¥ë°›ì•„ ì‚­ì œí•œë‹¤. 
 	{
 		int input_number;
-		cout << "Áö¿ì°íÀÚ ÇÏ´Â ¸Ş´º ¹øÈ£: ";
+		cout << "ì§€ìš°ê³ ì í•˜ëŠ” ë©”ë‰´ ë²ˆí˜¸: ";
 		cin >> input_number;
-		cout << input_number << "¹ø ¸Ş´º¸¦ Áö¿ó´Ï´Ù." << endl;
+		cout << input_number << "ë²ˆ ë©”ë‰´ë¥¼ ì§€ì›ë‹ˆë‹¤." << endl;
 
 		if (input_number <= 0 or input_number > menu.size()) {
 			cout << "out of index" << endl;
@@ -125,16 +126,16 @@ Store_menu::Store_menu(string file_name) {
 		}
 
 	}
-	void Store_menu::show_menu(void) //°í°´ÀÌ ¸Ş´º¸¦ º¼ ¼ö ÀÖµµ·Ï ¿¬°áÇØÁØ´Ù.
+	void Store_menu::show_menu(void) //ê³ ê°ì´ ë©”ë‰´ë¥¼ ë³¼ ìˆ˜ ìˆë„ë¡ ì—°ê²°í•´ì¤€ë‹¤.
 	{
 		cout.width(12);
-		cout << "½Äº°¹øÈ£";
+		cout << "ì‹ë³„ë²ˆí˜¸";
 		cout.width(20);
-		cout << "¸Ş´º¸í";
+		cout << "ë©”ë‰´ëª…";
 		cout.width(20);
-		cout << "°¡°İ";
+		cout << "ê°€ê²©";
 		cout.width(20);
-		cout << "Á¶¸®½Ã°£";
+		cout << "ì¡°ë¦¬ì‹œê°„";
 		cout << endl;
 
 		for (int i = 0; i < menu.size(); i++)
@@ -151,7 +152,7 @@ Store_menu::Store_menu(string file_name) {
 	}
 	void Store_menu::load_menu()
 	{
-		cout << "°æ°í! ¸Ş´º°¡ ÅØ½ºÆ® ÆÄÀÏ ±âÁØÀ¸·Î º¯°æµË´Ï´Ù." << endl << "¸Ş´º¸¦ ºÒ·¯¿ÀÁö ¾ÊÀ¸½Ã·Á¸é 0¹øÀ¸·Î µÇµ¹¾Æ°¡½Ã°í, ¸Ş´º¸¦ ºÒ·¯¿À·Á¸é ¾Æ¹« Å°³ª ´©¸£¼¼¿ä." << endl;
+		cout << "ê²½ê³ ! ë©”ë‰´ê°€ í…ìŠ¤íŠ¸ íŒŒì¼ ê¸°ì¤€ìœ¼ë¡œ ë³€ê²½ë©ë‹ˆë‹¤." << endl << "ë©”ë‰´ë¥¼ ë¶ˆëŸ¬ì˜¤ì§€ ì•Šìœ¼ì‹œë ¤ë©´ 0ë²ˆìœ¼ë¡œ ë˜ëŒì•„ê°€ì‹œê³ , ë©”ë‰´ë¥¼ ë¶ˆëŸ¬ì˜¤ë ¤ë©´ ì•„ë¬´ í‚¤ë‚˜ ëˆ„ë¥´ì„¸ìš”." << endl;
 		int input_check;
 		cin >> input_check;
 		if (input_check == 0) { return; }
@@ -159,7 +160,7 @@ Store_menu::Store_menu(string file_name) {
 		menu.clear();
 		string menu_list_file_name;
 
-		cout << "¸Ş´º¸¦ ÀúÀåÇÑ txt ÆÄÀÏÀÇ ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä." << endl;
+		cout << "ë©”ë‰´ë¥¼ ì €ì¥í•œ txt íŒŒì¼ì˜ ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”." << endl;
 		cin >> menu_list_file_name;
 		std::ifstream ift("menu.txt", std::ios::in);
 		while (ift)
