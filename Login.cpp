@@ -8,10 +8,6 @@
 
 using namespace std;
 
-bool engine() {
-
-}
-
 
 void Login::check_user(Person* user) {
 	string a = user->get_ID();
