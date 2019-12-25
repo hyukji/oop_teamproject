@@ -63,13 +63,16 @@ public:
 };
 
 class Customer :public Person {
-	int completed_order = 0; //주문 완료된 음식의 개수
-	int my_order=0;
+	vector<string> end_list; //주문 끝난 메뉴
+	int orders = 0;//안받은 주문의 개수
+	int my_order = 0; //각 주문의 order 번호!
 	Boss* store; //고객이 무슨 가게를 선택했는지 
+	vector<vector<string>> order_check;
 	vector<int> order_list; //고객의 주문내역을 int array type 으로 저장
 public:
+	void check_menu(void);
 	friend class Store_status;
-	Customer(int,string,string,Login*);
+	Customer(int, string, string, Login*);
 	Customer(string id, string pw, Login* login);
 
 	Boss* getstore() { return store; };
@@ -77,7 +80,7 @@ public:
 	void make_order(Store_status); // 가게의 고유번호를 바탕으로 메뉴를 하나씩 입력받아 array로 만들어 order[]에 넣어준다. 
 //	friend void Store_status::take_order(Customer& cus); //take_order가 order에 접근할 수 있도록!
 	void show_order(Store_menu, Store_status); // 본인이 무엇을 주문했는지 보여준다. 사람이 몇명있는지.
-	void alarm(); //(completed_order가 0이 아니면) 음식 완료 알람 및 completed_order=0
+	void alarm(void); //(completed_order가 0이 아니면) 음식 완료 알람 및 completed_order=0
 };
 
 class Store_status {
