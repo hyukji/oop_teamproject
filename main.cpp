@@ -124,9 +124,9 @@ int main() {
 								user_cus.show_order(*cus_sm, *cus_ss);
 							};
 
-
-						break;
-						}
+							break;
+					
+						}break;
 					case 2:{
 						user_cus.check_menu();
 						flag = 0;
@@ -173,7 +173,7 @@ int main() {
 						//가게 정보 관리 			
 						cout << "What do u want to do? Select a number." << endl;
 						cout << "1. Store name & PH update" << endl << "2. Add menu" << endl;
-						cout << "3. delete menu" << endl << "0.Logout" << endl;
+						cout << "3. delete menu" << endl << "4. revise menu" << endl << "5. show menu" << endl << "0. Logout" << endl;
 
 						flag = 0;
 						while (flag == 0) {
@@ -196,6 +196,13 @@ int main() {
 								user_bos.sm->show_menu();
 								user_bos.sm->del_menu();
 								user_bos.sm->save_menu();
+								user_bos.sm->show_menu();
+								break;
+							case 4:
+								user_bos.sm->show_menu();
+								user_bos.sm->rvs_menu();
+								break;
+							case 5:
 								user_bos.sm->show_menu();
 								break;
 							default:

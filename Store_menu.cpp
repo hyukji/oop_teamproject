@@ -150,6 +150,7 @@ Store_menu::Store_menu(string file_name) {
 			}
 			cout << endl;
 		}
+		cout << endl;
 	}
 	void Store_menu::load_menu()
 	{

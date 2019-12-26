@@ -23,7 +23,7 @@ int Store_status::take_order(Customer& cus)
 		m_Cuisine.insert(pair<int, Cuisine*>(order_num, cu));
 
 		order_num += 1;
-		cout <<  cus_me << " 주문이 완료 되었습니다.\n" << endl;
+		//cout <<  cus_me << " 주문이 완료 되었습니다.\n" << endl;
 	}
 	return 1;
 }
