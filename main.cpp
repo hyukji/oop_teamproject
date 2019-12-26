@@ -57,81 +57,88 @@ int main() {
 				cout << endl;
 				Customer& user_cus = ((Customer&)using_user);
 
-				while (1) {
+				flag = 0;
+				while (flag == 0) {
+					flag = 1;
 
-					//가게 골라서 Customer에 넣어주는 과정.
-					cout << "What restaurant do you want? Select a number." << endl;
-					login->Store_name_out(); //cout << "0. Logout\n" << "1. 더큰도시락\n" << "2. 김밥천국\n" << "3. 핫도그집 이름 모름" << endl;
-					cout << "0. Logout\n";
+					//일단 주문만 하는 거 만들어 놓았음.
 
-					flag = 0;
-					while (flag == 0) {
-						cin >> selnum;
-						cout << endl;
+					user_cus.alarm();
 
-						if (selnum == 0) { break; }
-						flag = 1;
-						switch (selnum) {
-						case 1:
-							user_cus.setstore(&b_kh);
-							break;
-						case 2:
-							user_cus.setstore(&b_hd);
-							break;
-						case 3:
-							user_cus.setstore(&b_tk);
-							break;
-						default:
-							flag = 0;
-							cout << "your input is not valid.\n";
-							break;
-						}
+					cout << "What do u want to do? Select a number." << endl;
+					cout << "1. 주문하기\n" << "2. 주문 내역 확인하기\n" << "0. Logout\n" << endl;
 
-					}
+					//주문 완료된게 있다면 알람 띄워주기
+
+					cin >> selnum;
+					cout << endl;
 
 					if (selnum == 0) { break; }
+					switch (selnum) {
+					case 1:
+					{
+						while (1) {
 
-					//고객이 선정한 가게의 메뉴와 state를 변수로 편하게 만들어 놓음.
-					Store_menu* cus_sm = user_cus.getstore()->sm;
-					Store_status* cus_ss = user_cus.getstore()->ss;
+							//가게 골라서 Customer에 넣어주는 과정.
+							cout << "What restaurant do you want? Select a number." << endl;
+							login->Store_name_out(); //cout << "0. Logout\n" << "1. 더큰도시락\n" << "2. 김밥천국\n" << "3. 핫도그집 이름 모름" << endl;
+							cout << "0. Go Back\n";
 
-					flag = 0;
-					while (flag == 0) {
-						flag = 1;
+							flag = 0;
+							while (flag == 0) {
+								cin >> selnum;
+								cout << endl;
 
-						//일단 주문만 하는 거 만들어 놓았음.
-						cout << "What do u want to do? Select a number." << endl;
-						cout << "1. 주문하기\n" << "2. 주문 내역 확인하기\n" << "0. Go Back\n" << endl;
+								if (selnum == 0) { break; }
+								flag = 1;
+								switch (selnum) {
+								case 1:
+									user_cus.setstore(&b_kh);
+									break;
+								case 2:
+									user_cus.setstore(&b_hd);
+									break;
+								case 3:
+									user_cus.setstore(&b_tk);
+									break;
+								default:
+									flag = 0;
+									cout << "your input is not valid.\n";
+									break;
+								}
+							}
+							if (selnum == 0) { break; }
 
-						
-						user_cus.alarm();
 
-						cin >> selnum;
-						cout << endl;
-						switch (selnum) {
-						case 1:						
+							//고객이 선정한 가게의 메뉴와 state를 변수로 편하게 만들어 놓음.
+							Store_menu* cus_sm = user_cus.getstore()->sm;
+							Store_status* cus_ss = user_cus.getstore()->ss;
 							//주문하기 전 메뉴를 띄어주는 과정.
+
 							cus_sm->show_menu();
 
-							break;
-						case 2:
-							user_cus.check_menu();
-							flag = 0;
-							break;
-						default:
-							flag = 0; cout << "your input is not valid.\n";
-							break;
-						}
-						if (selnum == 0) { break; }
-					}
-					if (selnum == 0) { continue; }
+							//메뉴 보고 숫자 입력받아 주문하는 과정
+							user_cus.make_order(*cus_ss);
+							if (cus_ss->take_order(user_cus) == 1) {
+								//주문 잘 들어갔나 확인알림
+								user_cus.show_order(*cus_sm, *cus_ss);
+							};
 
-					//메뉴 보고 숫자 입력받아 주문하는 과정
-					user_cus.make_order(*cus_ss);
-					if (cus_ss->take_order(user_cus) == 1) {
-						//주문 잘 들어갔나 확인알림
-						user_cus.show_order(*cus_sm, *cus_ss);
-					};
+
+						break;
+						}
+					case 2:{
+						user_cus.check_menu();
+						flag = 0;
+						break; }
+					default:
+						flag = 0; cout << "your input is not valid.\n";
+						break;
+					}
+					if (selnum == 0) { break; }
+				}
+
+				if (selnum == 0) { continue; }
 
 					//고객 종료하는 
 				}
@@ -145,8 +152,6 @@ int main() {
 				while (1) {
 					cout << "What do u want to do? Select a number." << endl;
 					cout << "1. Confirm orders\n" << "2. Manage store information\n" << "0. Logout\n";
-
-
 
 					cin >> selnum;
 					cout << endl;
