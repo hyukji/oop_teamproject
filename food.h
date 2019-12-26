@@ -32,7 +32,7 @@ class Person {
 	string password; //각 사람의 ID를 string type으로 저장
 	int type;
 public:
-	Person() {}
+	Person() {};
 	Person(string id, string pw, int rhs, Login*);
 	void set_ID(string); //string을 입력받아 ID를 string type으로 저장
 	string get_ID(void); //ID를 string type으로 return
@@ -56,10 +56,6 @@ public:
 	string get_name(void);
 	void set_sm(Store_menu*);
 	void set_ss(Store_status*);
-
-
-	//void store_open(void); //open이 false면 true로, true면 false로 바꿔준다.-true에서 false로 갈 때는 cooking_over을 실해해서 true일때만 닫을 수 있다. 
-	//bool checking(void); //order_list의 주문완료 여부를 확인하여 모두 true일때만 true를 return, 하나라도 주문 남아있으면 false return
 };
 
 class Customer :public Person {
@@ -72,13 +68,11 @@ class Customer :public Person {
 public:
 	void check_menu(void);
 	friend class Store_status;
-	Customer(int, string, string, Login*);
 	Customer(string id, string pw, Login* login);
 
 	Boss* getstore() { return store; };
 	void setstore(Boss* b) { store = b; };
 	void make_order(Store_status); // 가게의 고유번호를 바탕으로 메뉴를 하나씩 입력받아 array로 만들어 order[]에 넣어준다. 
-//	friend void Store_status::take_order(Customer& cus); //take_order가 order에 접근할 수 있도록!
 	void show_order(Store_menu, Store_status); // 본인이 무엇을 주문했는지 보여준다. 사람이 몇명있는지.
 	void alarm(void); //(completed_order가 0이 아니면) 음식 완료 알람 및 completed_order=0
 };
@@ -121,6 +115,4 @@ public:
 	void show_menu(void); //고객이 메뉴를 볼 수 있도록 연결해준다.
 	void load_menu();
 	void save_menu();
-	//friend void Customer::show_order(Store_menu, Store_status);
-
 };

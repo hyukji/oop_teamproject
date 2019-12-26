@@ -3,14 +3,10 @@
 
 
 
-Customer::Customer(int type, string id, string pw, Login* login) :Person(id, pw, 2, login)
-{
-
-};
-
 Customer::Customer(string id, string pw, Login* login) : Person(id, pw, 1, login) {
 
 };
+
 void Customer::make_order(Store_status ss) { //메뉴를 하나씩 입력받아 array로 만들어 order[]에 넣어준다. 
 	cout << "Select Menu! If you want nothing, press 0" << endl;
 	order_list.clear();
@@ -18,6 +14,12 @@ void Customer::make_order(Store_status ss) { //메뉴를 하나씩 입력받아 array로 만
 	while (true) {
 		int select_menu;
 		cin >> select_menu;
+
+		if ( select_menu > (store->sm->st_menu.size()) ) {
+			cout << select_menu << " is unknown number.\n";
+			cin.ignore();
+			continue;
+		}
 		if (select_menu == 0) {
 			if (order_list.size() == 0) { break; }
 			cout << "Your order is ready. Please wait.I will call you when the food is ready\n" << endl;
@@ -99,7 +101,6 @@ void Customer::alarm(void) {//(completed_order가 0이 아니면) 음식 완료 알람 및 c
 		
 		if (orders == 0) {
 			cout << "Your order is done. Enjoy your meal!\n" << endl;
-
 		}
 		else {
 			cout << "You have " << orders << "more orders. Please wait more\n" << endl;

@@ -18,7 +18,7 @@ int Store_status::take_order(Customer& cus)
 		string cus_me = cus.store->sm->get_menu(a);
 
 		string cus_id = cus.Person::get_ID();
-		Cuisine* cu = new Cuisine(cus, cus_me, 0);  //이거 new로 동적할당해도 되나???
+		Cuisine* cu = new Cuisine(cus, cus_me, 0); 
 		
 		m_Cuisine.insert(pair<int, Cuisine*>(order_num, cu));
 
@@ -73,6 +73,7 @@ void Cuisine::change_complete(void)
 }
 
 /////////////////////////////////////////////////////////////
+
 string Store_menu::get_menu(int n)
 {
 	return st_menu[n];

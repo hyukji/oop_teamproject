@@ -10,14 +10,17 @@ using namespace std;
 
 int main() {
 	int selnum;
-	
+	bool flag;
+
 	Login log_in;
 	Login* login = &log_in;
+
 	//Boss 3개와 그에 맞는 person까지 생성.
 	Boss b_tk("더큰도시락", "053-1234-1234","1111", login );
 	Boss b_kh("김밥천국", "053-1234-4567","2222", login );
 	Boss b_hd("뉴욕핫도그", "053-7894-4561", "3333", login );
 
+	//각자 메뉴랑 상태 넣어주는 함수들.
 	b_tk.sm = new Store_menu("더큰도시락");
 	b_kh.sm = new Store_menu("김밥천국");
 	b_hd.sm = new Store_menu("핫도그");
@@ -26,10 +29,9 @@ int main() {
 	b_kh.ss = new Store_status();
 	b_hd.ss = new Store_status();
 
-	bool flag;
+	//임시로 고객들 생성해 놓음
 	Customer* cuss = new Customer("1", "1", login);
 	Customer* cu = new Customer("2", "2", login);
-	//각자 메뉴랑 상태 넣어주는 함수들.
 	 
 	
 	while (1) {
@@ -110,6 +112,7 @@ int main() {
 						case 1:						
 							//주문하기 전 메뉴를 띄어주는 과정.
 							cus_sm->show_menu();
+
 							break;
 						case 2:
 							user_cus.check_menu();
