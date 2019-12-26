@@ -15,7 +15,7 @@ void Customer::make_order(Store_status ss) { //¸Þ´º¸¦ ÇÏ³ª¾¿ ÀÔ·Â¹Þ¾Æ array·Î ¸¸
 		int select_menu;
 		cin >> select_menu;
 
-		if ( select_menu > (store->sm->st_menu.size()) ) {
+		if (select_menu > (store->sm->st_menu.size())) {
 			cout << select_menu << " is unknown number.\n";
 			cin.ignore();
 			continue;
@@ -38,11 +38,12 @@ void Customer::show_order(Store_menu m, Store_status ss) {// º»ÀÎÀÌ ¹«¾ùÀ» ÁÖ¹®Ç
 		int a = order_list[i] - 1;
 		string cus_me = store->sm->get_menu(a);
 		cout << cus_me << " ";
-		string b[2];
-		b[0] = cus_me;
-		b[1] = "False";
+		string b[3];
+		b[0] = store->get_name();
+		b[1] = cus_me;
+		b[2] = "False";
 		vector<string> orvector;
-		for (int j = 0; j < 2; j++) {
+		for (int j = 0; j < 3; j++) {
 			orvector.push_back(b[j]);
 		}
 		order_check.push_back(orvector);
@@ -53,7 +54,7 @@ void Customer::show_order(Store_menu m, Store_status ss) {// º»ÀÎÀÌ ¹«¾ùÀ» ÁÖ¹®Ç
 		if (it->first == my_order) { break; };
 		if (it->second->complete == 0)
 			a += 1;
-		
+
 	}
 	if (a == 0 || a == 1) {
 		cout << "There is " << a << " order before your order\n" << endl;
@@ -67,29 +68,31 @@ void Customer::check_menu(void) {
 		cout << "You ordered nothing.\n" << endl;
 		return;
 	}
-		cout.width(20);
-		cout << "Menu";
-		cout.width(20);
-		cout << "Finished";
-		cout << endl;
-		for (int i = 0; i < order_check.size(); i++) {
-			for (int j = 0; j < 2; j++) {
-				cout.width(20);
-				cout << order_check[i][j];
-			}
-			cout << endl;
+	cout.width(20);
+	cout << "Store";
+	cout.width(20);
+	cout << "Menu";
+	cout.width(20);
+	cout << "Finished";
+	cout << endl;
+	for (int i = 0; i < order_check.size(); i++) {
+		for (int j = 0; j < 3; j++) {
+			cout.width(20);
+			cout << order_check[i][j];
 		}
-	
+		cout << endl;
+	}
+
 	cout << endl;
 }
 void Customer::alarm(void) {//(completed_order°¡ 0ÀÌ ¾Æ´Ï¸é) À½½Ä ¿Ï·á ¾Ë¶÷ ¹× completed_order=0
-	if (end_list.size()!=0) {
-		
+	if (end_list.size() != 0) {
+
 		for (int i = 0; i < end_list.size(); i++) {
-			cout<<end_list[i]<<" ";
+			cout << end_list[i] << " ";
 			for (int j = 0; j < order_check.size(); j++) {
-				if (order_check[j][0] == end_list[i]) {
-					order_check[j][1] = "True";
+				if (order_check[j][1] == end_list[i]) {
+					order_check[j][2] = "True";
 					break;
 				}
 			}
@@ -98,7 +101,7 @@ void Customer::alarm(void) {//(completed_order°¡ 0ÀÌ ¾Æ´Ï¸é) À½½Ä ¿Ï·á ¾Ë¶÷ ¹× c
 		end_list.clear();
 		cout << "is done. ";
 
-		
+
 		if (orders == 0) {
 			cout << "Your order is done. Enjoy your meal!\n" << endl;
 		}
