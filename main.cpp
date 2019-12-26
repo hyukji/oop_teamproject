@@ -88,7 +88,7 @@ int main() {
 							while (flag == 0) {
 								cin >> selnum;
 								cout << endl;
-
+	
 								if (selnum == 0) { break; }
 								flag = 1;
 								switch (selnum) {
@@ -109,7 +109,6 @@ int main() {
 							}
 							if (selnum == 0) { break; }
 
-
 							//고객이 선정한 가게의 메뉴와 state를 변수로 편하게 만들어 놓음.
 							Store_menu* cus_sm = user_cus.getstore()->sm;
 							Store_status* cus_ss = user_cus.getstore()->ss;
@@ -125,9 +124,11 @@ int main() {
 							};
 
 							break;
-					
-						}break;
-					case 2:{
+						};
+
+						break;
+					}
+					case 2: {
 						user_cus.check_menu();
 						flag = 0;
 						break; }
@@ -135,14 +136,14 @@ int main() {
 						flag = 0; cout << "your input is not valid.\n";
 						break;
 					}
-					if (selnum == 0) { break; }
-				}
+					
+					if (selnum == 0) { continue; }
+					flag = 0;
+					//continue;
+
+				};
 
 				if (selnum == 0) { continue; }
-
-					//고객 종료하는 
-				}
-
 			}
 			else {
 				//사장일 경우
@@ -155,6 +156,9 @@ int main() {
 
 					cin >> selnum;
 					cout << endl;
+
+					if (selnum == 0) { break; }
+
 					switch (selnum) {
 					case 1:
 						while (1) {
@@ -173,7 +177,7 @@ int main() {
 						//가게 정보 관리 			
 						cout << "What do u want to do? Select a number." << endl;
 						cout << "1. Store name & PH update" << endl << "2. Add menu" << endl;
-						cout << "3. delete menu" << endl << "4. revise menu" << endl << "5. show menu" << endl << "0. Logout" << endl;
+						cout << "3. delete menu" << endl << "4. revise menu" << endl << "5. show menu" << endl << "0. Go Back" << endl;
 
 						flag = 0;
 						while (flag == 0) {
@@ -201,20 +205,22 @@ int main() {
 							case 4:
 								user_bos.sm->show_menu();
 								user_bos.sm->rvs_menu();
+								user_bos.sm->save_menu();
+
 								break;
 							case 5:
 								user_bos.sm->show_menu();
 								break;
 							default:
-								flag = 0; cout << "your input is not valid.\n" << endl;
+								flag = 0;
+								cout << "your input is not valid.\n" << endl;
 								break;
 
 							}
 						}
-
+					default:
+						break;
 					}
-					if (selnum == 0) { break; }
-
 
 				}
 			}}
@@ -222,8 +228,6 @@ int main() {
 		default:
 			continue;
 		}
-
-		continue;
 
 		//break; // 프로그램 종료하는 break
 	}
