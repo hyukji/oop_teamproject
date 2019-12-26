@@ -54,24 +54,31 @@ void Customer::show_order(Store_menu m, Store_status ss) {// º»ÀÎÀÌ ¹«¾ùÀ» ÁÖ¹®Ç
 		
 	}
 	if (a == 0 || a == 1) {
-		cout << "There is " << a << " order before your order" << endl;
+		cout << "There is " << a << " order before your order\n" << endl;
 	}
-	else { cout << "There are " << a << " orders before your order"; }
+	else { cout << "There are " << a << " orders before your order\n"; }
 }
 
 void Customer::check_menu(void) {
-	cout.width(20);
-	cout << "Menu";
-	cout.width(20);
-	cout << "Finished";
-	cout << endl;
-	for (int i = 0; i < order_check.size(); i++) {
-		for (int j = 0; j < 2; j++) {
-			cout.width(20);
-			cout << order_check[i][j];
-		}
-		cout << endl;
+
+	if (order_check.size() == 0) {
+		cout << "You ordered nothing.\n" << endl;
+		return;
 	}
+		cout.width(20);
+		cout << "Menu";
+		cout.width(20);
+		cout << "Finished";
+		cout << endl;
+		for (int i = 0; i < order_check.size(); i++) {
+			for (int j = 0; j < 2; j++) {
+				cout.width(20);
+				cout << order_check[i][j];
+			}
+			cout << endl;
+		}
+	
+	cout << endl;
 }
 void Customer::alarm(void) {//(completed_order°¡ 0ÀÌ ¾Æ´Ï¸é) À½½Ä ¿Ï·á ¾Ë¶÷ ¹× completed_order=0
 	if (end_list.size()!=0) {
@@ -91,12 +98,13 @@ void Customer::alarm(void) {//(completed_order°¡ 0ÀÌ ¾Æ´Ï¸é) À½½Ä ¿Ï·á ¾Ë¶÷ ¹× c
 
 		
 		if (orders == 0) {
-			cout << "Your order is done. Enjoy your meal!" << endl;
+			cout << "Your order is done. Enjoy your meal!\n" << endl;
 
 		}
 		else {
-			cout << "You have " << orders << "more orders. Please wait more" << endl;
+			cout << "You have " << orders << "more orders. Please wait more\n" << endl;
 		}
 	}
+	//cout << "ÁÖ¹®ÇÑ °Ô ¾ø½À´Ï´Ù.\n" << endl;
 }
 

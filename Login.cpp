@@ -43,15 +43,18 @@ Person& Login::check_ID()
 			cout << "input your PW\n";
 
 			cin >> input_pw;
+
 			if (m[input_id]->get_password() == input_pw) {
+				cout << endl;
 				return *m[input_id];
 			}
 			else {
-				cout << "it's wrong PW. " << "Try again\n";
+				cout << "it's wrong PW. " << "Try again\n" << endl;
 				cout << endl;
 			}
 		}
 	}
+	cout << endl;
 }
 
 void Login::Store_name_out()

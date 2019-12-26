@@ -27,8 +27,8 @@ int main() {
 	b_hd.ss = new Store_status();
 
 	bool flag;
-
-	Customer* cus = new Customer("manager", "0000", login);
+	Customer* cuss = new Customer("1", "1", login);
+	Customer* cu = new Customer("2", "2", login);
 	//각자 메뉴랑 상태 넣어주는 함수들.
 	 
 	
@@ -44,9 +44,9 @@ int main() {
 		case 1:
 			login->sign_up();
 			break;
-		case 2:
+		case 2: {
 			// 로그인 하는 과정
-			Person& using_user = login->check_ID();
+			Person & using_user = login->check_ID();
 
 			//고객 사장 구분해주기
 			if (using_user.get_type() == 1) {
@@ -54,14 +54,14 @@ int main() {
 				cout << "Hello, Customer!  Your ID is " << using_user.get_ID() << endl;
 				cout << endl;
 				Customer& user_cus = ((Customer&)using_user);
-			
+
 				while (1) {
 
 					//가게 골라서 Customer에 넣어주는 과정.
 					cout << "What restaurant do you want? Select a number." << endl;
 					login->Store_name_out(); //cout << "0. Logout\n" << "1. 더큰도시락\n" << "2. 김밥천국\n" << "3. 핫도그집 이름 모름" << endl;
 					cout << "0. Logout\n";
-					
+
 					flag = 0;
 					while (flag == 0) {
 						cin >> selnum;
@@ -74,10 +74,10 @@ int main() {
 							user_cus.setstore(&b_kh);
 							break;
 						case 2:
-							user_cus.setstore(&b_tk);
+							user_cus.setstore(&b_hd);
 							break;
 						case 3:
-							user_cus.setstore(&b_hd);
+							user_cus.setstore(&b_tk);
 							break;
 						default:
 							flag = 0;
@@ -97,20 +97,22 @@ int main() {
 					while (flag == 0) {
 						flag = 1;
 
-					//일단 주문만 하는 거 만들어 놓았음.
-					cout << "What do u want to do? Select a number." << endl;
-					cout << "1. 주문하기\n" << "2. 주문 완료 확인하기\n" << "0. Go Back\n";
+						//일단 주문만 하는 거 만들어 놓았음.
+						cout << "What do u want to do? Select a number." << endl;
+						cout << "1. 주문하기\n" << "2. 주문 내역 확인하기\n" << "0. Go Back\n" << endl;
 
-					//주문하기 전 메뉴를 띄어주는 과정.
-					
+						
+						user_cus.alarm();
+
 						cin >> selnum;
 						cout << endl;
 						switch (selnum) {
-						case 1:
+						case 1:						
+							//주문하기 전 메뉴를 띄어주는 과정.
 							cus_sm->show_menu();
 							break;
 						case 2:
-							cus->alarm();
+							user_cus.check_menu();
 							flag = 0;
 							break;
 						default:
@@ -159,12 +161,12 @@ int main() {
 							if (selnum == 0) { break; }
 							user_bos.ss->cooking_over(selnum);
 						}if (selnum == 0) { continue; }
-					case 2:					
+					case 2:
 						//가게 정보 관리 			
 						cout << "What do u want to do? Select a number." << endl;
 						cout << "1. Store name & PH update" << endl << "2. Add menu" << endl;
 						cout << "3. delete menu" << endl << "0.Logout" << endl;
-						
+
 						flag = 0;
 						while (flag == 0) {
 							flag = 1;
@@ -194,15 +196,19 @@ int main() {
 
 							}
 						}
-						
+
 					}
 					if (selnum == 0) { break; }
 
 
 				}
-			}
+			}}
 
+		default:
+			continue;
 		}
+
+		continue;
 
 		//break; // 프로그램 종료하는 break
 	}

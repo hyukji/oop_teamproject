@@ -12,7 +12,7 @@ class Cuisine;
 
 int Store_status::take_order(Customer& cus)
 {
-	if (cus.order_list.size() == 0) { cout << "주문이 취소 되었습니다.\n"; return 0; }
+	if (cus.order_list.size() == 0) { cout << "주문이 취소 되었습니다.\n" << endl; return 0; }
 	for (int i = 0; i < cus.order_list.size(); i++) {
 		int a = cus.order_list[i]-1;
 		string cus_me = cus.store->sm->get_menu(a);
