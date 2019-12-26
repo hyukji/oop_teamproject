@@ -103,6 +103,7 @@ Store_menu::Store_menu(string file_name) {
 		{
 			vector<vector<string>> temp = menu;
 			menu.clear();
+			st_menu.clear();
 			if (input_number == 1) {
 				for (int i = 1; i < temp.size(); i++) {
 					temp[i][0] = to_string(stoi(temp[i][0]) - 1);
