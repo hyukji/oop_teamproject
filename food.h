@@ -20,7 +20,7 @@ class Login {
 private:
 	map<string, Person*> m;
 public:
-	Login() { cout << "로그인 생성 완료\n;"; }
+	Login() {  }
 	void check_user(Person*);
 	Person& check_ID(); //ID에 맞는 객체 password와 맞춰보고 맞P으면 객체 return
 	void sign_up();
